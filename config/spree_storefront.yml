@@ -2,66 +2,66 @@ default:
   navigation:
     - title: Women
       subtitle: Categories
-      url: /t/women
+      url: /t/clothing/women
       items:
         - :title: Skirts
-          :url: /t/women/skirts
+          :url: /t/clothing/women/skirts
         - :title: Dresses
-          :url: /t/women/dresses
+          :url: /t/clothing/women/dresses
         - :title: Shirts and Blouses
-          :url: /t/women/shirts-and-blouses
+          :url: /t/clothing/women/shirts-and-blouses
         - :title: Sweaters
-          :url: /t/women/sweaters
+          :url: /t/clothing/women/sweaters
         - :title: Tops and T-shirts
-          :url: /t/women/tops-and-t-shirts
+          :url: /t/clothing/women/tops
         - :title: Jackets and Coats
-          :url: /t/women/jackets-and-coats
+          :url: /t/clothing/women/jackets-and-coats
       promo_banners:
         - subtitle: New collection
           title: Summer 2019
-          url: /t/new-collection/summer-2019
+          url: /t/clothing/new-collection/summer-2019
           image: 'meganav/promo_banner_left-first-category.jpg'
         - subtitle: Special Offers
           title: Get up to 30% off
-          url: /t/special-offers/30-off
+          url: /t/clothing/special-offers/30-off
           image: 'meganav/promo_banner_right-first-category.jpg'
     - title: Men
       subtitle: Categories
-      url: /t/men
+      url: /t/clothing/men
       items:
         - :title: Shirts
-          :url: /t/men/shirts
+          :url: /t/clothing/men/shirts
         - :title: T-shirts
-          :url: /t/men/t-shirts
+          :url: /t/clothing/men/t-shirts
         - :title: Sweaters
-          :url: /t/men/sweaters
+          :url: /t/clothing/men/sweaters
         - :title: Jackets and Coats
-          :url: /t/men/jackets-and-coats
+          :url: /t/clothing/men/jackets-and-coats
       promo_banners:
         - subtitle: New collection
           title: Summer 2019
-          url: /t/new-collection/summer-2019
+          url: /t/clothing/new-collection/summer-2019
           image: 'meganav/promo_banner_left-second-category.jpg'
         - subtitle: Special Offers
           title: Get up to 30% off
-          url: /t/special-offers/30-off
+          url: /t/clothing/special-offers/30-off
           image: 'meganav/promo_banner_right-second-category.jpg'
     - title: Sportswear
       subtitle: Categories
-      url: /t/sportswear
+      url: /t/clothing/sportswear
       items:
         - :title: Tops
-          :url: /t/sportswear/tops
+          :url: /t/clothing/sportswear/tops
         - :title: Sweatshirts
-          :url: /t/sportswear/sweatshirts
+          :url: /t/clothing/sportswear/sweatshirts
         - :title: Pants
-          :url: /t/sportswear/pants
+          :url: /t/clothing/sportswear/pants
       promo_banners:
         - subtitle: New collection
           title: Summer 2019
-          url: /t/new-collection/summer-2019
+          url: /t/clothing/new-collection/summer-2019
           image: 'meganav/promo_banner_left-third-category.jpg'
         - subtitle: Special Offers
           title: Get up to 30% off
-          url: /t/special-offers/30-off
+          url: /t/clothing/special-offers/30-off
           image: 'meganav/promo_banner_right-third-category.jpg'
