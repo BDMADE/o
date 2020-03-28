@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  spree:
+    bkash_discount: "Discount (Bkash)"
