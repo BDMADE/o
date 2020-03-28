@@ -3,6 +3,7 @@ function PaymentTotalManager (input1) {
     this.input = input1
     this.paymentMethods = $('label[data-behavior="payment-method-selector"]')
     this.bkashPaymentTotal = $('[data-hook="bkash-payment-total"]')
+    this.bkash_discount_total = $('#order_bkash_discount_total')
     this.orderTotal = this.input.orderTotal
 
     this.formatOptions = {
@@ -25,9 +26,7 @@ PaymentTotalManager.prototype.calculatePaymentTotal = function () {
          }
         else {
             this.item_total = this.parseCurrencyToFloat($(".sub-total").data('item-total'))
-            this.bkashDiscount = (this.item_total * this.checked_discount) / 100.0
-            console.log(this.item_total)
-            console.log(this.checked_discount)
+            this.bkashDiscount = -((this.item_total * this.checked_discount) / 100.0)
             this.sum += this.parseCurrencyToFloat(this.bkashDiscount)
         }
 
@@ -44,8 +43,10 @@ PaymentTotalManager.prototype.parseCurrencyToFloat = function (input) {
 }
 
 PaymentTotalManager.prototype.readjustSummarySection = function (orderTotal, newBkashDiscountTotal, oldBkashDiscountTotal) {
-    let newOrderTotal = orderTotal + (oldBkashDiscountTotal - newBkashDiscountTotal)
-    this.bkashPaymentTotal.html(accounting.formatMoney(newBkashDiscountTotal, this.formatOptions))
+    let newOrderTotal = orderTotal + (newBkashDiscountTotal - oldBkashDiscountTotal)
+    let bkash_discount = accounting.formatMoney(newBkashDiscountTotal, this.formatOptions)
+    this.bkashPaymentTotal.html(bkash_discount)
+    this.bkash_discount_total.val(newBkashDiscountTotal)
     return this.orderTotal.html(accounting.formatMoney(accounting.toFixed(newOrderTotal, 10), this.formatOptions))
 }
 

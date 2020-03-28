@@ -18,6 +18,8 @@ Spree.config do |config|
   config.currency = "BDT"
 end
 
+Spree::PermittedAttributes.checkout_attributes << :bkash_discount_total
+
 # Configure Spree Dependencies
 #
 # Note: If a dependency is set here it will NOT be stored within the cache & database upon initialization.

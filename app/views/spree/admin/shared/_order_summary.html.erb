@@ -64,6 +64,13 @@
 
       <tr>
         <td data-hook='admin_order_tab_total_title'>
+          <strong><%= Spree.t(:bkash_discount) %>:</strong>
+        </td>
+        <td id='order_total'><%= Spree::Money.new(@order.bkash_discount_total, currency: @order.currency).to_html %></td>
+      </tr>
+
+      <tr>
+        <td data-hook='admin_order_tab_total_title'>
           <strong><%= Spree.t(:total) %>:</strong>
         </td>
         <td id='order_total'><%= @order.display_total.to_html %></td>

@@ -47,9 +47,13 @@
           </div>
         <% end %>
       <% end %>
+    <% end %>
 
+    <% bkash_payment =  Spree::PaymentMethod.find_by(name: :Bkash) %>
+
+    <% if order.passed_checkout_step?("delivery") && bkash_payment %>
       <div class="d-table-cell bkash_discount"><%= Spree.t('bkash_discount') %>:</div>
-      <% bkash_discount_total = Spree::Money.new(order.shipments.to_a.sum(&:cost), currency: order.currency) %>
+      <% bkash_discount_total = Spree::Money.new(order.bkash_discount_total, currency: order.currency) %>
       <div class="d-table-cell text-right bkash_discount"
            data-hook='bkash-payment-total'
            data-currency='<%= Money::Currency.find(order.currency).symbol %>'
@@ -68,8 +72,6 @@
           </div>
         <% end %>
       <% end %>
-
-
     <% end %>
 
     <% if order.adjustments.nonzero.eligible.exists? %>
