@@ -14,14 +14,21 @@
         <%= f.text_field :sku, class: 'form-control' %>
       </div>
 
+      <% store = Spree::Store.first %>
+
       <div class="form-group" data-hook="price">
         <%= f.label :price, Spree.t(:price) %>
-        <%= f.text_field :price, value: number_to_currency(@variant.price, unit: ''), class: 'form-control' %>
+        <%= f.text_field :price, value: @variant.price, class: 'form-control', disabled: false %>
+      </div>
+
+      <div class="form-group" data-hook="sale_price">
+            <%= f.label :sale_price, Spree.t(:sale_price) %>
+        <%= f.text_field :sale_price, value: @variant.sale_price, class: 'form-control', disabled: false %>
       </div>
 
       <div class="form-group" data-hook="cost_price">
         <%= f.label :cost_price, Spree.t(:cost_price) %>
-        <%= f.text_field :cost_price, value: number_to_currency(@variant.cost_price, unit: ''), class: 'form-control' %>
+        <%= f.number_field :cost_price, value: @variant.cost_price, class: 'form-control' %>
       </div>
 
       <div class="form-group" data-hook="tax_category">
@@ -29,8 +36,13 @@
         <%= f.collection_select(:tax_category_id, @tax_categories, :id, :name, { include_blank: Spree.t('match_choices.none') }, { class: 'select2' }) %>
       </div>
 
-      <div class="form-group" data-hook="discontinue_on">
+      <div class="form-group" data-hook="sale_discount">
+        <%= f.label :sale, Spree.t(:sale) %>
+        <% sale_array = [:true, :false] %>
+        <%= f.collection_select(:sale, sale_array,:to_s, :to_s, { include_blank: false }, { class: 'select2' }) %>
+      </div>
 
+      <div class="form-group" data-hook="discontinue_on">
           <%= f.label :discontinue_on, Spree.t(:discontinue_on) %>
           <%= f.error_message_on :discontinue_on %>
           <%= f.text_field :discontinue_on, value: datepicker_field_value(@variant.discontinue_on), class: 'datepicker form-control' %>
@@ -45,5 +57,29 @@
         <%= f.text_field field, value: value, class: 'form-control' %>
       </div>
     <% end %>
+
+    <% currency = '৳ ' %>
+    <% total_sale_discount = currency + ((@variant.cost_price * @variant.sale_discount) / 100).to_s %>
+    <% total_profit = currency + ((@variant.cost_price * @variant.profit_percentage) / 100).to_s %>
+
+    <% [:student_discount, :bkash_discount, :festival_discount].each do |field| %>
+      <div class="form-group" data-hook="<%= field %>">
+        <% value = number_with_precision(store.send(field), precision: 2) %>
+        <% tooltip_title = currency + ((@variant.price * value.to_i) / 100).to_s %>
+        <%= label_tag field, Spree.t(field), { data: { toggle: "tooltip", placement: "top" }, title: tooltip_title } %>
+        <%= text_field_tag field, value, { class: 'form-control', disabled: 'true' } %>
+      </div>
+    <% end %>
+
+    <div class="form-group" data-hook="sale_discount">
+      <%= f.label :sale_discount, Spree.t(:sale_discount), { data: { toggle: "tooltip", placement: "top" }, title: total_sale_discount } %>
+      <%= f.number_field :sale_discount, value: number_to_currency(@variant.sale_discount, unit: ''), class: 'form-control' %>
+    </div>
+
+    <div class="form-group" data-hook="profit_percentage">
+      <%= f.label :profit_percentage, Spree.t(:profit_percentage), { data: { toggle: "tooltip", placement: "top" }, title: total_profit } %>
+      <%= f.number_field :profit_percentage, value: number_to_currency(@variant.profit_percentage, unit: ''), class: 'form-control' %>
+    </div>
+
   </div>
 </div>

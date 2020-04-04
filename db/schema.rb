@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_085346) do
+ActiveRecord::Schema.define(version: 2020_03_28_085432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -972,6 +972,9 @@ ActiveRecord::Schema.define(version: 2020_03_22_085346) do
     t.string "facebook"
     t.string "twitter"
     t.string "instagram"
+    t.integer "student_discount", default: 10
+    t.integer "bkash_discount", default: 10
+    t.integer "festival_discount", default: 10
     t.index "lower((code)::text)", name: "index_spree_stores_on_lower_code", unique: true
     t.index ["default"], name: "index_spree_stores_on_default"
     t.index ["url"], name: "index_spree_stores_on_url"
@@ -1102,6 +1105,10 @@ ActiveRecord::Schema.define(version: 2020_03_22_085346) do
     t.datetime "updated_at", null: false
     t.datetime "discontinue_on"
     t.datetime "created_at", null: false
+    t.boolean "sale", default: false
+    t.integer "sale_price", default: 1000
+    t.integer "sale_discount", default: 10
+    t.float "profit_percentage", default: 10.0
     t.index ["deleted_at"], name: "index_spree_variants_on_deleted_at"
     t.index ["discontinue_on"], name: "index_spree_variants_on_discontinue_on"
     t.index ["is_master"], name: "index_spree_variants_on_is_master"

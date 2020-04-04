@@ -19,6 +19,7 @@ Spree.config do |config|
 end
 
 Spree::PermittedAttributes.checkout_attributes << :bkash_discount_total
+Spree::PermittedAttributes.store_attributes << [:student_discount, :bkash_discount, :festival_discount]
 
 # Configure Spree Dependencies
 #

@@ -20,6 +20,33 @@
     </div>
   </div>
 
+  <br/>
+
+  <div class="card">
+    <div class="card-header">
+      <h1 class="card-title mb-0 h5">
+        Discount Information
+      </h1>
+    </div>
+    <div class="card-body">
+      <%= f.field_container :student_discount, class: ['form-group'] do %>
+        <%= f.label :student_discount, Spree.t(:student_discount) %>
+        <%= f.number_field :student_discount, class: 'form-control', required: true %>
+        <%= f.error_message_on :student_discount %>
+      <% end %>
+      <%= f.field_container :bkash_discount, class: ['form-group'] do %>
+        <%= f.label :bkash_discount, Spree.t(:bkash_discount_p)  %>
+        <%= f.number_field :bkash_discount, class: 'form-control', required: true %>
+        <%= f.error_message_on :bkash_discount %>
+      <% end %>
+      <%= f.field_container :festival_discount, class: ['form-group'] do %>
+        <%= f.label :festival_discount, Spree.t(:festival_discount)  %>
+        <%= f.number_field :festival_discount, class: 'form-control', required: true %>
+        <%= f.error_message_on :festival_discount %>
+      <% end %>
+    </div>
+  </div>
+
   <br />
 
   <div class="card">
@@ -109,6 +136,7 @@
 </div>
 
 <br />
+</div>
 
 <script>
   $('#store_default_currency').select2();
