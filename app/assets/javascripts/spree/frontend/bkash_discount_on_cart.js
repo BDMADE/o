@@ -26,7 +26,7 @@ PaymentTotalManager.prototype.calculatePaymentTotal = function () {
          }
         else {
             this.item_total = this.parseCurrencyToFloat($(".sub-total").data('item-total'))
-            this.bkashDiscount = -((this.item_total * this.checked_discount) / 100.0)
+            this.bkashDiscount = -(Math.round((this.item_total * this.checked_discount) / 100.0))
             this.sum += this.parseCurrencyToFloat(this.bkashDiscount)
         }
 

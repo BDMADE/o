@@ -22,7 +22,7 @@
       </div>
 
       <div class="form-group" data-hook="sale_price">
-        <%= f.label :sale_price, Spree.t(:sale_price) %>
+            <%= f.label :sale_price, Spree.t(:sale_price) %>
         <%= f.text_field :sale_price, value: @variant.sale_price, class: 'form-control', disabled: false %>
       </div>
 
@@ -65,7 +65,7 @@
     <% [:student_discount, :bkash_discount, :festival_discount].each do |field| %>
       <div class="form-group" data-hook="<%= field %>">
         <% value = number_with_precision(store.send(field), precision: 2) %>
-        <% tooltip_title = currency + ((@variant.cost_price * value.to_i) / 100).to_s %>
+        <% tooltip_title = currency + ((@variant.price * value.to_i) / 100).to_s %>
         <%= label_tag field, Spree.t(field), { data: { toggle: "tooltip", placement: "top" }, title: tooltip_title } %>
         <%= text_field_tag field, value, { class: 'form-control', disabled: 'true' } %>
       </div>

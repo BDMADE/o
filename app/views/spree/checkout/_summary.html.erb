@@ -85,7 +85,7 @@
     <% end %>
 
     <div class="checkout-content-summary-table-order-total">
-      <div class="d-table-cell"><%= Spree.t(:total) %>:</div>
+      <div class="d-table-cell"><%= Spree.t(:subtotal) %>:</div>
       <div class="d-table-cell text-right">
         <span id='summary-order-total' data-currency="<%= Money::Currency.find(order.currency).symbol %>">
           <%= order.display_total.to_html %>
