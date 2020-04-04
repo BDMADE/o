@@ -30,7 +30,7 @@ $(document).ready(function () {
 
         let total_coupon_discount = student_discount_percentage + festival_discount_percentage + bkash_discount_percentage
         let total_cost_price = variant_cost_price * (1 + sale_percentage + profit_percentage)
-        let total_cost_price_without_sale_discount = total_cost_price - (variant_cost_price * sale_percentage)
+        let total_cost_price_without_sale_discount = variant_cost_price * (1 + profit_percentage - sale_percentage)
 
         let new_price = total_cost_price/(1 - total_coupon_discount)
         let new_sale_price = total_cost_price_without_sale_discount/(1 - total_coupon_discount)
