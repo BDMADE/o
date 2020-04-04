@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+  spree:
+    bkash_discount: "Discount (Bkash)"
+    student_discount: "Student Discount (%)"
+    bkash_discount_p: "Bkash Discount (%)"
+    sale_discount: "Sale Discount on cost price(%)"
+    festival_discount: "Festival Discount (%)"
+    profit_percentage: "Profit on cost price (%)"
+    sale_price: "Sale price"
