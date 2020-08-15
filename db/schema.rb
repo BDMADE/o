@@ -1106,7 +1106,7 @@ ActiveRecord::Schema.define(version: 2020_03_28_085432) do
     t.datetime "discontinue_on"
     t.datetime "created_at", null: false
     t.boolean "sale", default: false
-    t.integer "sale_price", default: 1000
+    t.integer "sale_price", default: 0
     t.integer "sale_discount", default: 10
     t.float "profit_percentage", default: 10.0
     t.index ["deleted_at"], name: "index_spree_variants_on_deleted_at"

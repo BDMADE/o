@@ -59,8 +59,9 @@
     <% end %>
 
     <% currency = '৳ ' %>
-    <% total_sale_discount = currency + ((@variant.cost_price * @variant.sale_discount) / 100).to_s %>
-    <% total_profit = currency + ((@variant.cost_price * @variant.profit_percentage) / 100).to_s %>
+    <% cost_price = @variant.cost_price.nil? ? 0 : @variant.cost_price  %>
+    <% total_sale_discount = currency + ((cost_price * @variant.sale_discount) / 100).to_s %>
+    <% total_profit = currency + ((cost_price * @variant.profit_percentage) / 100).to_s %>
 
     <% [:student_discount, :bkash_discount, :festival_discount].each do |field| %>
       <div class="form-group" data-hook="<%= field %>">

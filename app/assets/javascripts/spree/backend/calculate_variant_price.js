@@ -29,12 +29,11 @@ $(document).ready(function () {
         let profit_percentage = variant_profit/100
 
         let total_coupon_discount = student_discount_percentage + festival_discount_percentage + bkash_discount_percentage
-        let total_cost_price = variant_cost_price * (1 + sale_percentage + profit_percentage)
-        let total_cost_price_without_sale_discount = variant_cost_price * (1 + profit_percentage - sale_percentage)
+        let total_cost_price = variant_cost_price * (1 + profit_percentage)
 
         let new_price = total_cost_price/(1 - total_coupon_discount)
-        let new_sale_price = total_cost_price_without_sale_discount/(1 - total_coupon_discount)
-        console.log(new_sale_price)
+        let new_sale_price = new_price * (1 - sale_percentage)
+        //console.log(new_sale_price)
 
         //    update new price
         let int_new_price = Math.round(parseInt(new_price))
@@ -52,7 +51,7 @@ $(document).ready(function () {
         // bkash discount calculation will be based on new price
 
         let total_festival_discount = Math.round(new_price * festival_discount_percentage)
-        let total_variant_sale_discount = Math.round(variant_cost_price * sale_percentage)
+        let total_variant_sale_discount = Math.round(new_price * sale_percentage)
         let total_variant_profit_percentage = Math.round(variant_cost_price * profit_percentage)
 
         student_discount_selector.attr('data-original-title', (currency + total_student_discount))
